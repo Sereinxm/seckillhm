@@ -1,0 +1,33 @@
+server:
+  port: 18085
+spring:
+  application:
+    name: seckill-order
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://db-server:3306/seckill_general_order?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+  cloud:
+    nacos:
+      config:
+        file-extension: yaml
+        server-addr: nacos-server:8848
+      discovery:
+        #Nacos的注册地址
+        server-addr: nacos-server:8848
+  redis:
+    cluster:
+      nodes:
+        - redis-server:7001
+        - redis-server:7002
+        - redis-server:7003
+        - redis-server:7004
+        - redis-server:7005
+        - redis-server:7006
+  main:
+    allow-bean-definition-overriding: true
+logging:
+  pattern:
+    console: "%msg%n"

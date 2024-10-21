@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>seckill-service</artifactId>
+        <groupId>com.seckill</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>seckill-canal</artifactId>
+
+    <dependencies>
+        <!--web-->
+        <dependency>
+            <groupId>com.seckill</groupId>
+            <artifactId>seckill-web</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <!--esAPI-->
+        <dependency>
+            <groupId>com.seckill</groupId>
+            <artifactId>seckill-search-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.seckill</groupId>
+            <artifactId>seckill-page-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <!--goodsAPI-->
+        <dependency>
+            <groupId>com.seckill</groupId>
+            <artifactId>seckill-goods-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <!--canal-->
+        <dependency>
+            <groupId>top.javatool</groupId>
+            <artifactId>canal-spring-boot-autoconfigure</artifactId>
+            <version>1.2.1-RELEASE</version>
+        </dependency>
+    </dependencies>
+</project>
