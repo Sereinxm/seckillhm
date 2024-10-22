@@ -10,10 +10,13 @@ import com.seckill.goods.pojo.Sku;
 import com.seckill.goods.pojo.SkuAct;
 import com.seckill.goods.service.SkuActService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import tk.mybatis.mapper.entity.Example;
 
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 /****
@@ -27,6 +30,28 @@ public class SkuActServiceImpl implements SkuActService {
     @Autowired
     private SkuActMapper skuActMapper;
 
+
+    /**
+     * 查询总数
+     * @return
+     */
+    @Override
+    public Integer count() {
+        Example example = new Example(SkuAct.class);
+        Example.Criteria criteria = example.createCriteria();
+        //秒杀剩余商品数量>0
+        criteria.andGreaterThan("seckillNum",0);
+        //状态为参与秒杀，1:普通商品，2:参与秒杀
+        criteria.andEqualTo("status","2");
+        //秒杀结束时间>=当前时间
+        criteria.andGreaterThanOrEqualTo("seckillEnd",new Date());
+        return skuMapper.selectCountByExample(example);
+    }
+
+    @Override
+    public List<Sku> list(Integer page, Integer size) {
+        return Collections.emptyList();
+    }
 
     /**
      * SkuAct条件+分页查询

@@ -1,6 +1,7 @@
 package com.seckill.goods.service;
 
 import com.github.pagehelper.PageInfo;
+import com.seckill.goods.pojo.Sku;
 import com.seckill.goods.pojo.SkuAct;
 
 import java.util.List;
@@ -11,6 +12,17 @@ import java.util.List;
  * @Date  0:16
  *****/
 public interface SkuActService {
+
+
+    /**
+     * 查询总数量
+     */
+    Integer count();
+
+    /**
+     * 分页查询集合列表
+     */
+    List<Sku> list(Integer page, Integer size);
 
     /***
      * SkuAct多条件分页查询

@@ -30,10 +30,11 @@ public class SkuController {
     private SkuService skuService;
 
 
+
     /****
      * 分页查询-查询总数量
      */
-    @GetMapping(value = "/count")
+    @PostMapping(value = "/count")
     public Integer count(){
         return skuService.count();
     }
