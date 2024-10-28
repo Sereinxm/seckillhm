@@ -11,10 +11,16 @@ spring:
       discovery:
         #Nacos的注册地址
         server-addr: nacos-server:8848
-  data:
+#取消对elastsearch的健康检查
+management:
+  health:
     elasticsearch:
-      cluster-name: elasticsearch
-      cluster-nodes: es-server:9300
+      enabled: false
+#自定义elasticsearch连接配置
+elasticsearch:
+  host: es-server
+  port: 9200
+
 #超时配置
 ribbon:
   ReadTimeout: 3000000

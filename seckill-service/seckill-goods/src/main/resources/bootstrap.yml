@@ -1,13 +1,15 @@
 server:
   port: 18081
 spring:
+  jackson:
+    time-zone: GMT+8
   application:
     name: seckill-goods
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://db-server:3306/seckill_goods?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://db-server:3306/seckill_goods?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     username: root
-    password: 123456
+    password: eVcWs1dsEgiv4ijEZ1b6
   cloud:
     nacos:
       config:
@@ -16,6 +18,9 @@ spring:
       discovery:
         #Nacos的注册地址
         server-addr: nacos-server:8848
+    alibaba:
+      seata:
+        tx-service-group: seata_seckill_transaction
   redis:
     cluster:
       nodes:
@@ -30,6 +35,25 @@ spring:
 logging:
   level:
     #root: debug开启dubug级别
-    com.seckill.goods.dao: debug
+    com.seckill.goods.dao: error
   pattern:
     console: "%msg%n"
+
+elaticjob:
+  zookeeper:
+    server-lists: zk-server:3181 #zookeeper的地址
+    namespace: updatetask #定时任务命名空间
+
+# 动态定时任务
+zkserver: zk-server:3181
+zknamespace: zknamesp
+
+
+#超时配置
+ribbon:
+  ReadTimeout: 3000000
+  ConnectTimeout: 300000
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true

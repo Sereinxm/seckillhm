@@ -5,9 +5,9 @@ spring:
     name: seckill-user
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://db-server:3306/seckill_user?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://db-server:3306/seckill_user?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     username: root
-    password: 123456
+    password: eVcWs1dsEgiv4ijEZ1b6
   cloud:
     nacos:
       config:

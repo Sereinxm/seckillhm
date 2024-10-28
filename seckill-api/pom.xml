@@ -20,6 +20,7 @@
         <module>seckill-order-api</module>
         <module>seckill-manager-api</module>
         <module>seckill-page-api</module>
+        <module>seckill-message-api</module>
     </modules>
 
     <dependencies>

@@ -8,21 +8,24 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 import tk.mybatis.spring.annotation.MapperScan;
 
-/*****
- * @Author: http://www.itheima.com
- * @Project: seckill
- * @Description: com.seckill.GoodsApplication
-
-
- ****/
+/**
+ * @author http://www.itheima.com
+ */
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients(basePackages = {"com.seckill.goods.feign","com.seckill.message.feign"})
+@EnableFeignClients(basePackages = {"com.seckill.goods.feign", "com.seckill.message.feign"})
 @MapperScan(basePackages = "com.seckill.order.dao")
 public class OrderApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(OrderApplication.class,args);
+        SpringApplication.run(OrderApplication.class, args);
     }
 
+    @Bean
+    public ServerEndpointExporter serverEndpointExporter() {
+        return new ServerEndpointExporter();
+    }
 }
+
+
+

@@ -32,10 +32,11 @@ spring:
     expose-session-attributes: true
     request-context-attribute: request
 
+#静态页位置
+htmlPath: C:/5_code/html
+
+
 #超时配置
 ribbon:
   ReadTimeout: 300000
   ConnectTimeout: 30000
-
-#静态页位置
-htmlPath: D:/page/html

@@ -13,4 +13,12 @@
         订单API
     </description>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.seckill</groupId>
+            <artifactId>seckill-goods-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
 </project>

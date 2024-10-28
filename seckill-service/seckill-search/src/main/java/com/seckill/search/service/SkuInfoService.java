@@ -5,26 +5,21 @@ import org.springframework.data.domain.Page;
 
 import java.util.Map;
 
-/*****
- * @Author: http://www.itheima.com
- * @Project: seckillproject
- * @Description: com.seckill.search.service.SkuInfoService
- ****/
 public interface SkuInfoService {
 
-    /***
-     * 秒杀商品搜索
+    /**
+     * 搜索
      */
     Page<SkuInfo> search(Map<String,String> searchMap);
 
-    /***
-     * 增量操作  ->删除索引   type=3
-     *           ->修改索引   type=2
-     *           ->添加索引   type=1
+    /**
+     * 单条索引操作
+     * @param type: 1:增加，2：修改，3：删除
+     * @param skuInfo
      */
     void modify(Integer type, SkuInfo skuInfo);
-
-    /***
+    
+    /**
      * 批量导入
      */
     void addAll();

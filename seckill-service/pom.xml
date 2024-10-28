@@ -23,9 +23,15 @@
         <module>seckill-manager</module>
         <module>seckill-page</module>
         <module>seckill-canal</module>
+        <module>seckill-seata</module>
+        <module>seckill-message</module>
     </modules>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-recipes</artifactId>

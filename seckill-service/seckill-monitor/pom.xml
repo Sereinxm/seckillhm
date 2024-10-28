@@ -21,11 +21,6 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-
         <!--依赖goods-api-->
         <dependency>
             <groupId>com.seckill</groupId>
@@ -33,19 +28,32 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
-        <!-- ElasticJobAutoConfiguration自动配置类作用-->
-        <!--<dependency>
-            <groupId>com.github.kuhn-he</groupId>
-            <artifactId>elastic-job-lite-spring-boot-starter</artifactId>
-            <version>2.1.5</version>
-        </dependency>-->
-
         <!--依赖db-->
         <dependency>
             <groupId>com.seckill</groupId>
             <artifactId>seckill-db</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.calcite.avatica</groupId>
+            <artifactId>avatica-core</artifactId>
+            <version>1.15.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.12</version>
+        </dependency>
+
+        <!-- ElasticJobAutoConfiguration自动配置类作用-->
+        <dependency>
+            <groupId>com.github.kuhn-he</groupId>
+            <artifactId>elastic-job-lite-spring-boot-starter</artifactId>
+            <version>2.1.5</version>
+        </dependency>
+
     </dependencies>
 
     <build>

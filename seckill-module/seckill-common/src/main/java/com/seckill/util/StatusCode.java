@@ -1,6 +1,7 @@
 package com.seckill.util;
 
 /**
+ * @author http://www.itheima.com
  * 返回码
  */
 public class StatusCode {
@@ -17,7 +18,10 @@ public class StatusCode {
     public static final int DECOUNT_1=1;    //递减成功
     public static final int DECOUNT_NUM=405;//库存不足
     public static final int DECOUNT_HOT=205;//商品是热卖商品
+    public static final int DECOUNT_OK=200;//库存递减成功
     public static final int ORDER_QUEUE=202;//抢购商品正在排队
     public static final int ORDER_OK=200;//抢单成功
 
+    //令牌无效
+    public static final int TOKEN_ERROR=401;
 }

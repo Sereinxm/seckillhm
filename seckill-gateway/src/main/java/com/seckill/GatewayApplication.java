@@ -8,20 +8,18 @@ import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 import org.springframework.web.util.pattern.PathPatternParser;
 
-/*****
- * @Author: 黑马训练营
- * @Description: com.changgou
- ****/
+/**
+ * @author http://www.itheima.com
+ */
 @SpringBootApplication
 public class GatewayApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(GatewayApplication.class,args);
+        SpringApplication.run(GatewayApplication.class, args);
     }
 
     /**
      * 配置跨域
-     * @return
      */
     @Bean
     public CorsWebFilter corsFilter() {

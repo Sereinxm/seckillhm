@@ -3,6 +3,10 @@ server:
 spring:
   application:
     name: seckill-monitor
+  datasource: # Druid
+    driver-class-name: org.apache.calcite.avatica.remote.Driver
+    url: jdbc:avatica:remote:url=http://druid-server:8082/druid/v2/sql/avatica/
+    type: com.alibaba.druid.pool.DruidDataSource
   cloud:
     nacos:
       config:
@@ -20,10 +24,16 @@ spring:
         - redis-server:7004
         - redis-server:7005
         - redis-server:7006
+logging:
+  pattern:
+    console: "%msg%n"
+
 elaticjob:
   zookeeper:
     server-lists: zk-server:3181
     namespace: monitortask
-logging:
-  pattern:
-    console: "%msg%n"
+
+#超时配置
+ribbon:
+  ReadTimeout: 3000000
+  ConnectTimeout: 300000

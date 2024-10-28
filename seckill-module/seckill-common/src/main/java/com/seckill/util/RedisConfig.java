@@ -4,30 +4,24 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
-/*****
- * @Author: http://www.itheima.com
- * @Project: seckill
- * @Description: com.seckill.goods.config.RedissonConfig
-
-
- ****/
+/**
+ * @author http://www.itheima.com
+ */
 public class RedisConfig {
 
     /***
      * 模板操作对象序列化设置
      * @param redissonConnectionFactory
-     * @return
      */
     @Bean("redisTemplate")
     public RedisTemplate getRedisTemplate(RedisConnectionFactory redissonConnectionFactory) {
-        RedisTemplate<Object, Object> redisTemplate = new RedisTemplate();
+        RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(redissonConnectionFactory);
         redisTemplate.setValueSerializer(valueSerializer());
         redisTemplate.setKeySerializer(keySerializer());
@@ -36,9 +30,8 @@ public class RedisConfig {
         return redisTemplate;
     }
 
-    /****
+    /**
      * 序列化设置
-     * @return
      */
     @Bean
     public StringRedisSerializer keySerializer() {
@@ -47,7 +40,6 @@ public class RedisConfig {
 
     /****
      * 序列化设置
-     * @return
      */
     @Bean
     public RedisSerializer valueSerializer() {

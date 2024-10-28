@@ -3,23 +3,31 @@ package com.seckill.order.service;
 import com.github.pagehelper.PageInfo;
 import com.seckill.order.pojo.Order;
 
-import java.util.List;
+import java.io.IOException;
 import java.util.Map;
 
-/****
- * @Author:www.itheima.com
- * @Description:Order业务层接口
- * @Date  0:16
- *****/
+/**
+ * @author http://www.itheima.com
+ */
 public interface OrderService {
 
-    /***
+    /**
+     * 热点数据下单
+     * @param orderMap
+     */
+    void addHotOrder(Map<String, String> orderMap);
+
+    /**
+     * 添加订单
+     */
+    int add(Order order);
+
+    /**
      * Order多条件分页查询
-     * @param order
-     * @param page
-     * @param size
-     * @return
      */
     PageInfo<Order> findPage(Order order, int page, int size);
 
+    Order findById(String id);
+
+    void pay(String id);
 }

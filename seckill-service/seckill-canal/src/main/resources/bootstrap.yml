@@ -11,6 +11,7 @@ spring:
       discovery:
         #Nacos的注册地址
         server-addr: nacos-server:8848
+
 #超时配置
 ribbon:
   ReadTimeout: 3000000
@@ -19,7 +20,8 @@ logging:
   pattern:
     console: "%msg%n"
   level:
-    root: error
+    root: info
+
 #Canal配置
 canal:
   server: canal-server:11111

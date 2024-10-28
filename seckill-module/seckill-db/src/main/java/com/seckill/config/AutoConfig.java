@@ -4,22 +4,17 @@ import com.seckill.util.IdWorker;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-/*****
- * @Author: http://www.itheima.com
- * @Project: seckill
- * @Description: com.seckill.config.AutoConfig
-
-
- ****/
+/**
+ * @author http://www.itheima.com
+ */
 @Configuration
 public class AutoConfig {
 
     /***
      * 创建IdWorker
-     * @return
      */
     @Bean
-    public IdWorker idWorker(){
+    public IdWorker idWorker() {
         return new IdWorker();
     }
 

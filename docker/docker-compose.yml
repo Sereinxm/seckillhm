@@ -1,0 +1,58 @@
+version: '3.8'
+name: seckill
+networks:
+  seckill_network:
+    name: seckill_network
+services:
+  mysql:
+    container_name: mysql
+    image: mysql
+    ports:
+      - "3306:3306"
+      - "33060:33060"
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      TZ: "Asia/Shanghai"
+    volumes:
+      - "./mysql/data:/var/lib/mysql"
+      - "./mysql/conf:/etc/mysql/conf.d"
+    networks:
+      - seckill_network
+  nacos:
+    container_name: nacos
+    image: nacos/nacos-server
+    ports:
+      - "8848:8848"
+      - "9848:9848"
+      - "9849:9849"
+    environment:
+      MODE: "standalone"
+    volumes:
+      - "./nacos/conf:/home/nacos/conf"
+    networks:
+      - seckill_network
+    depends_on:
+      - mysql
+  elasticsearch:
+    container_name: elasticsearch
+    image: elasticsearch:7.17.25
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - "./elasticsearch/plugins:/usr/share/elasticsearch/plugins"
+    environment:
+      discovery.type: single-node
+    networks:
+      - seckill_network
+  kibana:
+    container_name: kibana
+    image: kibana:7.17.25
+    ports:
+      - "5601:5601"
+    environment:
+      ELASTICSEARCH_HOSTS: http://elasticsearch:9200
+    networks:
+      - seckill_network
+    depends_on:
+      - elasticsearch

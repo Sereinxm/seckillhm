@@ -1,12 +1,15 @@
 package com.seckill.util;
 
-/*****
- * @Author: http://www.itheima.com
- * @Project: seckill
- * @Description: com.seckill.util.Audience
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
-
- ****/
+/**
+ * @author http://www.itheima.com
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
 public class SystemCertificate {
 
     private String clientId;
@@ -14,35 +17,4 @@ public class SystemCertificate {
     private String name;
     private int expiresSecond;
 
-    public String getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(String clientId) {
-        this.clientId = clientId;
-    }
-
-    public String getBase64Secret() {
-        return base64Secret;
-    }
-
-    public void setBase64Secret(String base64Secret) {
-        this.base64Secret = base64Secret;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getExpiresSecond() {
-        return expiresSecond;
-    }
-
-    public void setExpiresSecond(int expiresSecond) {
-        this.expiresSecond = expiresSecond;
-    }
 }

@@ -12,11 +12,9 @@ import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
-/****
- * @Author:www.itheima.com
- * @Description:Category业务层接口实现类
- * @Date  0:16
- *****/
+/**
+ * @author http://www.itheima.com
+ */
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
@@ -26,42 +24,43 @@ public class CategoryServiceImpl implements CategoryService {
 
     /**
      * Category条件+分页查询
+     *
      * @param category 查询条件
-     * @param page 页码
-     * @param size 页大小
+     * @param page     页码
+     * @param size     页大小
      * @return 分页结果
      */
     @Override
-    public PageInfo<Category> findPage(Category category, int page, int size){
+    public PageInfo<Category> findPage(Category category, int page, int size) {
         //分页
-        PageHelper.startPage(page,size);
+        PageHelper.startPage(page, size);
         //搜索条件构建
         Example example = createExample(category);
         //执行搜索
-        return new PageInfo<Category>(categoryMapper.selectByExample(example));
+        return new PageInfo<>(categoryMapper.selectByExample(example));
     }
 
     /**
      * Category分页查询
-     * @param page
-     * @param size
-     * @return
+     *
+     * @param page 页码
+     * @param size 页大小
      */
     @Override
-    public PageInfo<Category> findPage(int page, int size){
+    public PageInfo<Category> findPage(int page, int size) {
         //静态分页
-        PageHelper.startPage(page,size);
+        PageHelper.startPage(page, size);
         //分页查询
-        return new PageInfo<Category>(categoryMapper.selectAll());
+        return new PageInfo<>(categoryMapper.selectAll());
     }
 
     /**
      * Category条件查询
-     * @param category
-     * @return
+     *
+     * @param category 查询条件
      */
     @Override
-    public List<Category> findList(Category category){
+    public List<Category> findList(Category category) {
         //构建查询条件
         Example example = createExample(category);
         //根据构建的条件查询数据
@@ -71,44 +70,44 @@ public class CategoryServiceImpl implements CategoryService {
 
     /**
      * Category构建查询对象
-     * @param category
-     * @return
+     *
+     * @param category 查询条件
      */
-    public Example createExample(Category category){
-        Example example=new Example(Category.class);
+    public Example createExample(Category category) {
+        Example example = new Example(Category.class);
         Example.Criteria criteria = example.createCriteria();
-        if(category!=null){
+        if (category != null) {
             // 分类ID
-            if(!StringUtils.isEmpty(category.getId())){
-                    criteria.andEqualTo("id",category.getId());
+            if (!StringUtils.isEmpty(category.getId())) {
+                criteria.andEqualTo("id", category.getId());
             }
             // 分类名称
-            if(!StringUtils.isEmpty(category.getName())){
-                    criteria.andLike("name","%"+category.getName()+"%");
+            if (!StringUtils.isEmpty(category.getName())) {
+                criteria.andLike("name", "%" + category.getName() + "%");
             }
             // 商品数量
-            if(!StringUtils.isEmpty(category.getGoodsNum())){
-                    criteria.andEqualTo("goodsNum",category.getGoodsNum());
+            if (!StringUtils.isEmpty(category.getGoodsNum())) {
+                criteria.andEqualTo("goodsNum", category.getGoodsNum());
             }
             // 是否显示
-            if(!StringUtils.isEmpty(category.getIsShow())){
-                    criteria.andEqualTo("isShow",category.getIsShow());
+            if (!StringUtils.isEmpty(category.getIsShow())) {
+                criteria.andEqualTo("isShow", category.getIsShow());
             }
             // 是否导航
-            if(!StringUtils.isEmpty(category.getIsMenu())){
-                    criteria.andEqualTo("isMenu",category.getIsMenu());
+            if (!StringUtils.isEmpty(category.getIsMenu())) {
+                criteria.andEqualTo("isMenu", category.getIsMenu());
             }
             // 排序
-            if(!StringUtils.isEmpty(category.getSeq())){
-                    criteria.andEqualTo("seq",category.getSeq());
+            if (!StringUtils.isEmpty(category.getSeq())) {
+                criteria.andEqualTo("seq", category.getSeq());
             }
             // 上级ID
-            if(!StringUtils.isEmpty(category.getParentId())){
-                    criteria.andEqualTo("parentId",category.getParentId());
+            if (!StringUtils.isEmpty(category.getParentId())) {
+                criteria.andEqualTo("parentId", category.getParentId());
             }
             // 模板ID
-            if(!StringUtils.isEmpty(category.getTemplateId())){
-                    criteria.andEqualTo("templateId",category.getTemplateId());
+            if (!StringUtils.isEmpty(category.getTemplateId())) {
+                criteria.andEqualTo("templateId", category.getTemplateId());
             }
         }
         return example;
@@ -116,47 +115,48 @@ public class CategoryServiceImpl implements CategoryService {
 
     /**
      * 删除
-     * @param id
      */
     @Override
-    public void delete(Integer id){
+    public void delete(Integer id) {
         categoryMapper.deleteByPrimaryKey(id);
     }
 
     /**
      * 修改Category
-     * @param category
      */
     @Override
-    public void update(Category category){
+    public void update(Category category) {
         categoryMapper.updateByPrimaryKey(category);
     }
 
     /**
      * 增加Category
-     * @param category
      */
     @Override
-    public void add(Category category){
+    public void add(Category category) {
         categoryMapper.insertSelective(category);
     }
 
     /**
      * 根据ID查询Category
-     * @param id
-     * @return
      */
     @Override
-    public Category findById(Integer id){
-        return  categoryMapper.selectByPrimaryKey(id);
+    public Category findById(Integer id) {
+        return categoryMapper.selectByPrimaryKey(id);
     }
 
     /**
      * 查询Category全部数据
-     * @return
      */
     @Override
     public List<Category> findAll() {
         return categoryMapper.selectAll();
+    }
+
+    @Override
+    public List<Category> findByParentId(Integer id) {
+        Category category = new Category();
+        category.setParentId(id);
+        return categoryMapper.select(category);
     }
 }
